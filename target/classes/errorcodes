@@ -1,0 +1,26 @@
+public Advertisement addAd(Advertisement ad){
+	String partnerName=ad.getPartnerId();
+	
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	Date currentDate =Calendar.getInstance().getTime();
+	
+	for(Advertisement oneAd: adsMap.values()){
+		String dateStored= oneAd.getDate();
+		Date date2=Calendar.getInstance().getTime();
+		try {
+			date2 = dateFormat.parse(dateStored);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		long diff = currentDate.getTime()-date2.getTime();
+		int days=(int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+		
+		if(oneAd.getPartnerId().equals(partnerName)&&(days<oneAd.getDuration())){
+			throw new DataNotFoundException(oneAd.getPartnerId()+ " will expire in "+days+" days");
+		}
+	}
+	 ad.setId(adsMap.size()+1);
+	 ad.setDate(dateFormat.format(currentDate));
+	 adsMap.put(ad.getId(), ad);
+	 return ad;
+ }
