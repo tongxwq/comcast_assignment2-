@@ -70,5 +70,8 @@ public Advertisement addAd(Advertisement ad){
 	}
 	 return advertisement;
  }
+ public void methodforchange1(){
+	 
+ }
  
 }
