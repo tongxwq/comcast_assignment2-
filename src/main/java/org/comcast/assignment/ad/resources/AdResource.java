@@ -41,6 +41,9 @@ public class AdResource {
 	public Advertisement addOneAd(Advertisement ad){
 		return adservice.addAd(ad);
 	}
+	public void newMethod2(){
+		
+	}
 	
 	
 }
