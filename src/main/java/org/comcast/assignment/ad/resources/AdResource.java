@@ -24,6 +24,9 @@ public class AdResource {
 	public List<Advertisement> getAds(){
 		return adservice.getAllAds();
 	}
+	public void newMethod(){
+		
+	}
 	
 	@GET
 	@Path("/{adId}")
